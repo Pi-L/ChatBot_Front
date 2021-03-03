@@ -1,0 +1,104 @@
+@use '../common/fonts' as f;
+@use '../common/palette' as c;
+@use '../common/vclasses';
+@use '../common/mixins' as m;
+@use '../common/variables' as v;
+@use '../common/mediaQueries' as mq;
+
+body.home {
+	@include m.baseColors();
+
+	section:nth-of-type(2n + 1) {
+		@include m.baseColors('secondary');
+	}
+
+	.mainContent {
+		padding-top: 0;
+	}
+
+	.hero {
+		display: grid;
+		grid-template-columns: 3fr minmax(calc(32rem - #{v.$containerLeftRightPadding} * 2), 96rem) 1fr;
+		grid-template-rows: 2fr auto 1fr;
+		column-gap: v.$containerLeftRightPadding;
+
+		min-height: calc(100vh - var(--header__nav__height));
+		> img {
+			height: 100%;
+			object-fit: cover;
+			grid-row: 1 / span 3;
+			grid-column: 1 / span 3;
+		}
+
+		> .title--container {
+			grid-row: 2;
+			grid-column: 2;
+
+			display: flex;
+			flex-flow: column nowrap;
+
+			@include m.padDual(2.4rem, 2.4rem);
+
+			background-color: c.$background-transparent;
+
+			h1 {
+				@include f.font__secondary('bold', h0, 'normal', false);
+				text-align: center;
+
+				@include mq.mq('lg') {
+					font-size: 4.8rem;
+					text-align: left;
+				}
+				@include mq.mq('xl') {
+					font-size: 7.2rem;
+				}
+			}
+
+			.mainCTA {
+				width: max-content;
+				align-self: center;
+
+				@include m.padDual(2rem, 3rem);
+
+				@include f.font__primary('semiBold', p);
+
+				@include m.baseColors('secondary', true);
+
+				@include mq.mq('lg') {
+					font-size: 4rem;
+					align-self: end;
+				}
+			}
+		}
+	}
+
+	.fp_section {
+		@include m.padDual(4rem, 2rem);
+
+		> .container {
+			display: flex;
+			flex-flow: row wrap;
+			align-items: stretch;
+			justify-content: center;
+
+			> h2 {
+				width: 100%;
+				text-align: center;
+				@include m.padTB(4rem);
+				@include f.font__secondary('bold', h1);
+			}
+
+			> * {
+				flex-shrink: 0;
+			}
+		}
+
+		&.fp_student > .container {
+			justify-content: space-around;
+
+			.card-student {
+				margin-bottom: 1.6rem;
+			}
+		}
+	}
+}

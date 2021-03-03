@@ -1,0 +1,55 @@
+@use './variables' as var;
+@use './mixins' as m;
+
+%noOutlines {
+	text-decoration: none;
+	color: inherit;
+
+	&:focus {
+		outline: none;
+	}
+	&::-moz-focus-inner {
+		border: 0;
+	}
+}
+
+%container {
+	max-width: var.$containerMaxWidth;
+	@include m.padLR(var.$containerLeftRightPadding);
+	margin: 0 auto;
+}
+
+%smallContainer {
+	max-width: var.$smallContainerMaxWidth;
+	@include m.padLR(var.$containerLeftRightPadding);
+	margin: 0 auto;
+}
+
+%fillAvailableSpaceCol {
+	display: flex;
+	flex-flow: column nowrap;
+	> * {
+		flex-grow: 1;
+	}
+}
+
+%centerFlexCol {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+}
+
+%centerFlexRow {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: center;
+}
+
+%betweenFlexRow {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-between;
+}

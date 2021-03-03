@@ -1,0 +1,7 @@
+@function szFact($size, $alt: false) {
+	@if ($alt == true) {
+		@return calc(#{$size} * var(--pd__factAlt));
+	} @else {
+		@return calc(#{$size} * var(--pd__fact));
+	}
+}

@@ -1,0 +1,22 @@
+$white: rgb(255, 255, 255);
+$orange: rgb(253, 126, 55);
+$black: rgb(51, 17, 0);
+$lightBrown: rgb(102, 48, 20);
+$grey: rgb(112, 112, 112);
+$transparentDark-1: rgba(0, 0, 0, 0.16);
+$transparentDark-2: rgba(0, 0, 0, 0.5);
+
+$background-primary: $white;
+$background-secondary: $orange;
+$background-transparent: $transparentDark-2;
+
+$text-primary: $black;
+$text-secondary: $white;
+$text-third: $orange;
+$text-hover: $orange;
+$text-primary-transparent: rgba($black, 0.5);
+
+$tag-primary: $lightBrown;
+
+$border-primary: $grey;
+$boxShadow: $transparentDark-1;

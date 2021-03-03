@@ -1,0 +1,48 @@
+@use '../common/mixins' as m;
+@use '../common/fonts' as f;
+@use '../common/palette' as c;
+@use '../common/vclasses' as vc;
+@use '../common/functions' as fn;
+
+body.single-module {
+	.mainContent {
+		padding-top: 0;
+	}
+
+	article {
+		width: 100%;
+		@extend %fillAvailableSpaceCol;
+
+		.single-title--container {
+			position: relative;
+			width: 100%;
+			flex-grow: 0;
+
+			img {
+				max-height: fn.szFact(40rem, true);
+			}
+
+			h1 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+
+				color: c.$text-secondary;
+				@include f.font__secondary('bold', h1);
+			}
+		}
+
+		section.smallContainer {
+			@include m.padTB(4rem);
+			@extend %centerFlexCol;
+			@include m.baseColors('primary');
+			@include f.font__secondary('semiBold', h2);
+
+			.duration {
+				font-size: 1.2em;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+}

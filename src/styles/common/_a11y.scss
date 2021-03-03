@@ -1,0 +1,64 @@
+@use 'palette' as c;
+
+.skipToContent {
+	position: absolute;
+
+	top: 0;
+	left: -100rem;
+
+	height: 1px;
+	width: 1px;
+	// overflow: hidden;
+
+	&:active,
+	&:focus {
+		top: 0;
+		left: 0;
+
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px c.$boxShadow;
+		background-color: c.$background-secondary;
+		color: c.$text-secondary;
+		display: block;
+		font-size: 14px;
+		line-height: 1.2;
+		height: auto;
+		width: auto;
+		left: 5px;
+		top: 5px;
+		padding: 8px 14px;
+		text-decoration: none;
+		z-index: 100000;
+	}
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: #eee;
+	clip: auto !important;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}

@@ -1,0 +1,65 @@
+@use '../common/mixins' as m;
+@use '../common/fonts' as f;
+@use '../common/palette' as c;
+@use '../common/vclasses';
+@use '../common/functions' as fn;
+@use '../common/mediaQueries' as mq;
+
+body.single-student {
+	article {
+		@extend %fillAvailableSpaceCol;
+		@include m.baseColors();
+		@include m.padTB(4rem);
+		@extend %centerFlexCol;
+
+		img {
+			@include m.square(fn.szFact(40rem));
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		h1 {
+			@include m.padTB(4rem);
+		}
+
+		.calendarIcon {
+			margin-top: 0;
+			margin-bottom: 4rem;
+		}
+
+		.single__content {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-items: flex-start;
+
+			text-align: center;
+
+			@include mq.mq('md') {
+				text-align: left;
+			}
+
+			.student__hobbie {
+				flex: 1 0 fn.szFact(29rem, true);
+				@include m.padLR(1.6rem);
+
+				&:last-of-type {
+					flex: 1 0 100%;
+				}
+
+				&:not(:last-of-type) {
+					margin-bottom: 4rem;
+				}
+
+				dt {
+					@include f.font__secondary('semiBold', 2.4rem);
+					margin-bottom: 2rem;
+				}
+
+				dd {
+					@include f.font__primary('regular', 2rem);
+				}
+			}
+		}
+	}
+}

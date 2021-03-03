@@ -1,0 +1,89 @@
+@use './fonts' as f;
+@use './palette' as c;
+@use './vclasses';
+@use './mixins' as m;
+@use './functions' as fn;
+
+body {
+	background-color: c.$background-primary;
+	color: c.$text-primary;
+	@include f.font__primary('regular', p);
+}
+
+.mainContent {
+	position: relative;
+	min-height: var(--main__minHeight);
+
+	@extend %fillAvailableSpaceCol;
+	@include m.padTB(4rem);
+
+	h1 {
+		margin-bottom: 4rem;
+		@include f.font__secondary('bold', h1);
+		text-align: center;
+	}
+
+	h2 {
+		@include f.font__secondary('semiBold', h2);
+	}
+
+	.calendarIcon {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		@include m.marginTB(1.6rem);
+
+		color: c.$tag-primary;
+		@include f.font__primary('regular', sm);
+
+		line-height: 1;
+
+		&::before {
+			height: fn.szFact(1.2em);
+			margin-right: fn.szFact(0.8rem);
+		}
+	}
+
+	.pagination__container {
+		width: 100%;
+
+		ul.pagination {
+			@include m.padTB(4rem);
+			@extend %centerFlexRow;
+			> * {
+				flex: 0 0 auto;
+			}
+			.pagination__item {
+				position: relative;
+				@include m.square(3rem, 0.5rem, true);
+
+				border: 1px solid c.$background-secondary;
+				@include m.customColors(
+					c.$background-primary,
+					c.$background-secondary,
+					true,
+					current
+				);
+
+				&:not(:last-of-type) {
+					margin-right: fn.szFact(1rem);
+				}
+
+				cursor: pointer;
+
+				a {
+					@include m.absCoveringParent();
+				}
+			}
+		}
+	}
+
+	&:not(.nous-contacter) ~ div {
+		.grecaptcha-badge {
+			z-index: -10000 !important;
+			opacity: 0 !important;
+			right: -200rem !important;
+		}
+	}
+}

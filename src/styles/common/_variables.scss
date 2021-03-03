@@ -1,0 +1,35 @@
+@use './mediaQueries' as mq;
+
+$containerMaxWidth: 130rem;
+$containerLeftRightPadding: 1.6rem;
+$smallContainerMaxWidth: 84rem;
+
+$header__nav__height: 8.8rem;
+$header__nav__height--md: 10.5rem;
+
+$footer__height: 41rem;
+$footer__height--lg: 26rem;
+
+$padding__factor: 0.5;
+$padding__factor--alt: 0.75;
+$padding__factor--md: 1;
+$padding__factor--altMd: 1;
+
+body {
+	--header__nav__height: #{$header__nav__height};
+	--footer__height: #{$footer__height};
+	--main__minHeight: calc(100vh - var(--header__nav__height) - var(--footer__height));
+
+	--pd__fact: #{$padding__factor};
+	--pd__factAlt: #{$padding__factor--alt};
+
+	@include mq.mq('md') {
+		--pd__fact: #{$padding__factor--md};
+		--pd__factAlt: #{$padding__factor--altMd};
+		--header__nav__height: #{$header__nav__height--md};
+	}
+
+	@include mq.mq('lg') {
+		--footer__height: #{$footer__height--lg};
+	}
+}
