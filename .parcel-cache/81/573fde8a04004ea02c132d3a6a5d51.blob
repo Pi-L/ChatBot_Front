@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="af1a1ec1c8cf49fa525ddd169ba4bdf4">
+    <title>Chat'Rabia</title>
+  </head>
+  <body>
+    <header>
+      <h1>Chat'Rabia</h1>
+    </header>
+    <main id="root"></main>
+    <script src="3c11a115b6d8d9bb1c7c1721c40cab81"></script>
+  </body>
+</html>

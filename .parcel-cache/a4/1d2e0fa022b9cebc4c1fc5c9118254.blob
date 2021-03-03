@@ -1,0 +1,26 @@
+"use strict";
+
+var _api = _interopRequireDefault(require("./scripts/api/api"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const mainElement = document.getElementById('root');
+const pseudoPopin = document.querySelector('.pseudo_popin');
+const pseudoPopinValid = pseudoPopin.querySelector('.sendPseudo');
+const pseudoPopinInput = pseudoPopin.querySelector('.sendPseudo');
+let userName;
+pseudoPopinValid.addEventListener('click', e => {
+  e.preventDefault();
+
+  if (e.target.value === '') {
+    e.target.value = "Pseudo Obligatoire";
+    return;
+  }
+
+  userName = e.target.value;
+  console.log("userName", userName);
+});
+(0, _api.default)('toto', 'plouf plouf plouf').then(message => {
+  mainElement.appendChild(message.userMessageEl);
+  mainElement.appendChild(message.botMessageEl);
+});

@@ -1,0 +1,47 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _SpeakBubble = _interopRequireDefault(require("./SpeakBubble"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class Message {
+  constructor({
+    id = null,
+    userName = '',
+    userMessage = '',
+    botMessage = '',
+    option = ''
+  } = {}) {
+    _defineProperty(this, "id", void 0);
+
+    _defineProperty(this, "userName", void 0);
+
+    _defineProperty(this, "userMessage", void 0);
+
+    _defineProperty(this, "botMessage", void 0);
+
+    _defineProperty(this, "option", void 0);
+
+    _defineProperty(this, "userMessageEl", void 0);
+
+    _defineProperty(this, "botMessageEl", void 0);
+
+    this.id = id;
+    this.userName = userName;
+    this.userMessage = userMessage;
+    this.botMessage = botMessage;
+    this.option = option;
+    this.userMessageEl = new _SpeakBubble.default(userName, userMessage, false).getEl();
+    this.botMessageEl = new _SpeakBubble.default('Mr bot', botMessage, true).getEl();
+  }
+
+}
+
+exports.default = Message;

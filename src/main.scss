@@ -1,0 +1,148 @@
+@use 'src/styles/common/reset' as *;
+@use 'src/styles/common/utilities' as *;
+
+@use 'src/styles/common/mixins' as m;
+@use 'src/styles/common/fonts' as f;
+@use 'src/styles/common/palette' as c;
+
+$body-pad-lr: 5rem;
+
+body {
+    padding: 0 $body-pad-lr;
+
+    background-color: c.$background-primary;
+    color: c.$text-primary;
+    @include f.font__primary('regular', p);
+
+    position: relative;
+
+}
+
+$header-height : 90px;
+$footer-height : 110px;
+
+header {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top : 0;
+
+    height: $header-height;
+
+    background-color: c.$lightBrown;
+    color: c.$text-secondary;
+
+    z-index: 1000;
+
+    border-radius: 0 0 20px 20px;
+
+    h1 {
+        @include f.font__secondary('bold', h1);
+        text-align: center;
+    }
+}
+
+main {
+    overflow: hidden;
+    min-height: calc(100vh - #{$header-height} - #{$footer-height});
+    padding: 5px 0;
+
+    .speakBubble_container.box-triangle {
+        $triangle-color: #227093;
+        $triangle-width: 20px;
+        color: #f7f1e3;
+        background-color: $triangle-color;
+        font-size: 29px;
+
+        width: max-content;
+        min-width: 120px;
+        max-width: calc(49vw - #{$body-pad-lr});
+
+        border: 3px solid #331100;
+        border-radius: 10px;
+        padding: 5px 10px;
+
+        margin-bottom: 50px;
+
+        > .userName {
+            font-size: .6em;
+            font-style: italic;
+        }
+
+        &.bot {
+            @include m.add-triangle(bottom, $triangle-color, $triangle-width, calc(100% - #{$triangle-width * 1.5}));
+            margin-right: auto;
+        }
+
+        &.person {
+            @include m.add-triangle(bottom, $triangle-color, $triangle-width, $triangle-width * 1.5);
+            margin-left: auto;
+        }
+    }
+}
+
+footer {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    width: 100%;
+    height: $footer-height;
+
+    padding: 5px 10px;
+    border-radius: 15px 15px 0 0 ;
+
+    background-color: c.$lightBrown;
+    color: c.$text-secondary;
+
+    font-weight: bold;
+
+    > * {
+        margin-right: 5px;
+    }
+}
+
+aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2f2f2f;
+
+    .pseudo_popin_container {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: max-content;
+        height: 120px;
+        padding: 5px 20px;
+
+        border: 10px solid #f2f2f2;
+        border-radius: 20px;
+
+        background: c.$lightBrown;
+        color: c.$text-secondary;
+
+        font-weight: bold;
+
+        > * {
+            margin-right: 5px;
+        }
+    }
+}
+
+
+
+
+
+

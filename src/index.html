@@ -4,11 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="main.scss" />
     <title>Chat'Rabia</title>
   </head>
   <body>
+    <header>
+      <h1>Chat'Rabia</h1>
+    </header>
     <main id="root"></main>
-    <script src="/build/scripts/main.js"></script>
+    <footer>
+        <form class="messageForm">
+            <label for="message">Votre message</label>
+            <input id="message" type="text">
+            <button class="sendMessage">Envoyer</button>
+        </form>
+    </footer>
+    <aside class="pseudo_popin">
+        <form class="pseudo_popin_container">
+            <label for="pseudo">Votre pseudo</label>
+            <input id="pseudo" type="text">
+            <button type="submit" class="sendPseudo">Valider</button>
+        </form>
+    </aside>
+    <script src="main.js"></script>
   </body>
 </html>

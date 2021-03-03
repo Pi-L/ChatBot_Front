@@ -1,0 +1,35 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class SpeakBubble {
+  constructor(name = 'Mr Bot', message = '', isBot = true) {
+    _defineProperty(this, "name", void 0);
+
+    _defineProperty(this, "message", void 0);
+
+    _defineProperty(this, "isBot", void 0);
+
+    _defineProperty(this, "speakBubbleEl", void 0);
+
+    _defineProperty(this, "creatDomEl", () => {
+      this.speakBubbleEl = document.createElement('p');
+      this.speakBubbleEl.classList.add(`speakBubble_container box-triangle ${this.isBot ? 'bot' : 'person'}`);
+    });
+
+    _defineProperty(this, "getEl", () => this.speakBubbleEl);
+
+    this.name = name;
+    this.message = message;
+    this.isBot = isBot;
+    this.creatDomEl();
+  }
+
+}
+
+exports.default = SpeakBubble;
