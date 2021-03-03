@@ -6,3 +6,5 @@ build
 .parcel-cache
 /.parcel-cache/
 /.vscode/
+package-lock.json
+*-lock.json
