@@ -1,4 +1,3 @@
-@use './vendors' as vd;
 @use './variables' as var;
 @use './mixins' as m;
 @use './palette' as c;
@@ -6,91 +5,71 @@
 @use './functions' as fn;
 
 .container {
-	max-width: var.$containerMaxWidth;
-	@include m.padLR(var.$containerLeftRightPadding);
-	margin: 0 auto;
-	width: 100%;
+  max-width: var.$containerMaxWidth;
+  @include m.padLR(var.$containerLeftRightPadding);
+  margin: 0 auto;
+  width: 100%;
 }
 
 .smallContainer {
-	max-width: var.$smallContainerMaxWidth;
-	@include m.padLR(var.$containerLeftRightPadding);
-	margin: 0 auto;
-	width: 100%;
+  max-width: var.$smallContainerMaxWidth;
+  @include m.padLR(var.$containerLeftRightPadding);
+  margin: 0 auto;
+  width: 100%;
 }
 
 .imgCoverWidth {
-	width: 100%;
-	object-fit: cover;
+  width: 100%;
+  object-fit: cover;
 }
 
 .imgCoverHeight {
-	height: 100%;
-	object-fit: cover;
-}
-
-.fbIcon {
-	@include vd.myFA(fab, facebook-f);
-}
-
-.linkedinIcon {
-	@include vd.myFA(fab, linkedin-in);
-}
-
-.twitterIcon {
-	@include vd.myFA(fab, twitter);
-}
-
-.calendarIcon {
-	@include vd.myFA(far, calendar-alt);
-}
-
-.arrowRightIcon {
-	@include vd.myFA(far, arrow-alt-circle-right);
+  height: 100%;
+  object-fit: cover;
 }
 
 .more {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	height: fn.szFact(4.8rem, true);
+  height: fn.szFact(4.8rem, true);
 
-	background-color: c.$background-secondary;
-	color: c.$text-secondary;
-	@include f.font__primary('semiBold', h2);
+  background-color: c.$background-secondary;
+  color: c.$text-secondary;
+  @include f.font__primary('semiBold', h2);
 
-	span {
-		margin-left: 1rem;
-	}
+  span {
+    margin-left: 1rem;
+  }
 
-	&:hover span,
-	&:active span {
-		animation: arrowMove 0.4s ease-in-out infinite alternate;
-	}
+  &:hover span,
+  &:active span {
+    animation: arrowMove 0.4s ease-in-out infinite alternate;
+  }
 }
 
 .center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .w100 {
-	width: 100%;
+  width: 100%;
 }
 
 @keyframes arrowMove {
-	100% {
-		transform: translateX(1rem);
-	}
+  100% {
+    transform: translateX(1rem);
+  }
 }
 
 @keyframes elAppear {
-	0% {
-		transform: translateX(-100vw);
-	}
-	100% {
-		transform: translateX(0);
-	}
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

@@ -1,23 +1,4 @@
-@use './common/vendors';
-
 @use './common/reset';
 
 @use './common/utilities';
 @use './common/global';
-
-@use './modules/nav';
-@use './modules/footer';
-
-@use './modules/frontPage';
-
-@use './modules/card';
-@use './modules/cardStudent';
-
-@use './modules/rgpd';
-@use './modules/contact';
-@use './modules/archives';
-@use './modules/singleModule';
-@use './modules/singleNews';
-@use './modules/singleStudent';
-
-@use './common/a11y';

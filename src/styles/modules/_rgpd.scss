@@ -1,8 +1,0 @@
-@use '../common/vclasses';
-
-.privacy-policy,
-.page-template-default:not(.home) {
-	.mainContent {
-		@extend %smallContainer;
-	}
-}
