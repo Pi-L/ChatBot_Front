@@ -35,8 +35,10 @@ const deliverMessage = (messageHolderList = [], index = 0) => {
 
     if(index >= messageHolderList.length) return;
 
-    mainEl.appendChild(messageHolderList[index].element);
-    scrollToBottom();
+    if(!!messageHolderList[index].message) {
+        mainEl.appendChild(messageHolderList[index].element);
+        scrollToBottom();
+    }
 
     if(++index >= messageHolderList.length) return;
 
@@ -45,25 +47,14 @@ const deliverMessage = (messageHolderList = [], index = 0) => {
     setTimeout(() => deliverMessage(messageHolderList, index), messageHolderList[index].timeDelayMs);
 }
 
-const startInterval = () => {
-    timerInterval = setInterval(() => {
-        timer++;
-
-        if(timer > 25) {
-            sendMessage(userName, 'unevachedansunpresquimangedesfourmisarcenciel');
-            timer = 0;
-        }
-    }, 1000);
-}
-
-const sendMessage = (userName, userMessage) => {
-    getMessage(userName, userMessage)
+const sendMessage = (nameText, messageText) => {
+    getMessage(nameText, messageText)
         .then(message => {
 
-            if(message.userMessageHolder.message !== ''
+            if(!!message.userMessageHolder?.message
                 && message.userMessageHolder.message !== 'unevachedansunpresquimangedesfourmisarcenciel') {
 
-                mainEl.appendChild(message.userMessageHolder?.element);
+                mainEl.appendChild(message.userMessageHolder.element);
                 scrollToBottom();
             }
 
@@ -76,6 +67,18 @@ const sendMessage = (userName, userMessage) => {
                 }, message.botMessageHolderList[0].timeDelayMs);
             }
         });
+}
+
+const startInterval = () => {
+    const interval = setInterval(() => {
+
+        timer++;
+
+        if(timer > 25) {
+            sendMessage(userName,'unevachedansunpresquimangedesfourmisarcenciel');
+            timer = 0;
+        }
+    }, 1000);
 }
 
 pseudoPopinFormEl.addEventListener('submit', (e) => {

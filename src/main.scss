@@ -52,25 +52,46 @@ main {
     min-height: calc(100vh - #{$header-height} - #{$footer-height});
     padding: 5px 0;
 
-    .speakBubble_container.box-triangle {
+    .speakBubble_container {
+
         $triangle-color: c.$CardBg;
-        $triangle-width: 20px;
+        $triangle-width: 15px;
+        $triangle-space-factor: 2;
         color: c.$cardText;
         background-color: $triangle-color;
         font-size: 29px;
 
         width: max-content;
         min-width: 120px;
-        max-width: calc(49vw - #{$body-pad-lr});
+        max-width: calc(70vw - #{$body-pad-lr});
 
         border: 3px solid c.$cardText;
         border-radius: 10px;
         padding: 5px 10px;
 
-        margin-bottom: 50px;
+        margin-bottom: 60px;
 
-        overflow-wrap: break-word;
-        word-wrap: break-word;
+        &.box-triangle {
+
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+
+            &.bot {
+                @include m.add-triangle(bottom, $triangle-color, $triangle-width, calc(100% - #{$triangle-width * $triangle-space-factor}));
+            }
+
+            &.person {
+                @include m.add-triangle(bottom, $triangle-color, $triangle-width, $triangle-width * $triangle-space-factor);
+            }
+        }
+
+        > .image {
+            display: block;
+            max-height: calc(100vh - #{$header-height} - #{$footer-height} - 60px);
+            width: auto;
+            padding: 5px 5px 10px;
+            border-radius: 20px;
+        }
 
         > .userName {
             font-size: .6em;
@@ -78,15 +99,6 @@ main {
 
             overflow-wrap: break-word;
             word-wrap: break-word;
-        }
-
-        &.bot {
-            @include m.add-triangle(bottom, $triangle-color, $triangle-width, calc(100% - #{$triangle-width * 1.5}));
-
-        }
-
-        &.person {
-            @include m.add-triangle(bottom, $triangle-color, $triangle-width, $triangle-width * 1.5);
         }
     }
 

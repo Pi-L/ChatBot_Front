@@ -20,6 +20,9 @@ export default class Message {
 
     userName = '';
 
+    botName = '';
+
+
     userMessageHolder = {};
 
     botMessageHolderList = [];
@@ -28,7 +31,7 @@ export default class Message {
 
     constructor({
         id = null,
-        botName = 'Mr bot',
+        botName = 'Nono',
         userName = '',
         userMessage = '',
         botMessage = [],
@@ -37,14 +40,19 @@ export default class Message {
 
         this.id = id;
         this.userName = userName;
+        this.botName = botName;
         this.option = option;
 
-        this.userMessageHolder = this.getMessageHolder(userName, userMessage, false, false);
-        this.botMessageHolderList = botMessage.map(mess => this.getMessageHolder(botName, mess, true, option === "shifumi" || option === "pendu"));
+        if (userMessage !== '') {
+            this.userMessageHolder = this.getMessageHolder(userName, userMessage, false, false);
+        }
 
+        if (botMessage.length > 0) {
+            this.botMessageHolderList = botMessage.map(mess => this.getMessageHolder(botName, mess, true, option === "shifumi" || option === "pendu"));
+        }
     }
 
-    getRandomMSSleepTime = (message = '') => (Math.random() + 1) * 1000 + message.length * 40;
+    getRandomMSSleepTime = (message = '') => (Math.random() + 1) * 1000 + (message.length ? message.length * 20 : 0);
 
     getMessageHolder = (userName, message, isBot, isShifumi) => {
 
