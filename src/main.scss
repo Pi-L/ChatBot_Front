@@ -55,7 +55,8 @@ main {
     .speakBubble_container {
 
         $triangle-color: c.$CardBg;
-        $triangle-width: 20px;
+        $triangle-width: 15px;
+        $triangle-space-factor: 2;
         color: c.$cardText;
         background-color: $triangle-color;
         font-size: 29px;
@@ -76,11 +77,11 @@ main {
             word-wrap: break-word;
 
             &.bot {
-                @include m.add-triangle(bottom, $triangle-color, $triangle-width, calc(100% - #{$triangle-width * 1.5}));
+                @include m.add-triangle(bottom, $triangle-color, $triangle-width, calc(100% - #{$triangle-width * $triangle-space-factor}));
             }
 
             &.person {
-                @include m.add-triangle(bottom, $triangle-color, $triangle-width, $triangle-width * 1.5);
+                @include m.add-triangle(bottom, $triangle-color, $triangle-width, $triangle-width * $triangle-space-factor);
             }
         }
 
