@@ -1,5 +1,7 @@
 export default class SpeakBubble {
 
+    imageRegex = new RegExp(/.*\.(jpg|jpeg|png|gif|JPG).*/gm);
+
     name = '';
 
     message = '';
@@ -13,28 +15,38 @@ export default class SpeakBubble {
         this.message = message;
         this.isBot = isBot;
 
-        if (this.message.match(/jpeg$|jpg$|png$|gif$/)) {
-            this.speakBubbleEl = document.createElement('img')
-            this.speakBubbleEl.setAttribute("src", this.message)
-            this.speakBubbleEl.style.maxWidth = "2000px"
+        const isMessageImageLink = this.isImageLink(message);
 
-        } else {
-            this.speakBubbleEl = document.createElement('p');
-            this.speakBubbleEl.innerText = this.message.replace('&quot;', '"');
-        }
-        this.speakBubbleEl.classList.add('speakBubble_container', 'box-triangle', this.isBot ? 'bot' : 'person');
-
-
+        this.speakBubbleEl = document.createElement('article');
+        this.speakBubbleEl.classList.add('speakBubble_container', this.isBot ? 'bot' : 'person');
 
         const nameEl = document.createElement('p');
         nameEl.classList.add('userName');
-        nameEl.innerText = `${name  } :`;
-        if (this.message.match(/jpeg$|jpg$|png$|gif$/)) {
-            nameEl.prepend(this.speakBubbleEl)
+        nameEl.innerText = `${name} :`;
+        this.speakBubbleEl.append(nameEl);
+
+        let mainContentEl;
+
+        if (isMessageImageLink) {
+
+            mainContentEl = document.createElement('img');
+            mainContentEl.setAttribute("src", this.message);
+            mainContentEl.classList.add('image');
+
         } else {
-            this.speakBubbleEl.prepend(nameEl)
+
+            this.speakBubbleEl.classList.add('box-triangle');
+
+            mainContentEl = document.createElement('p');
+            mainContentEl.innerText = message.replace(/&quot;/, '');
+            mainContentEl.classList.add('text');
         }
+
+        this.speakBubbleEl.append(mainContentEl);
+
     }
+
+    isImageLink = (message) => this.imageRegex.test(message);
 
     getEl = () => this.speakBubbleEl;
 
