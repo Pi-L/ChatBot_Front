@@ -48,7 +48,7 @@ const deliverMessage = (messageHolderList = [], index = 0) => {
 const startInterval = () => {
     timerInterval = setInterval(() => {
         timer++;
-        console.log("timer "+timer);
+
         if(timer > 25) {
             sendMessage(userName, 'unevachedansunpresquimangedesfourmisarcenciel');
             timer = 0;

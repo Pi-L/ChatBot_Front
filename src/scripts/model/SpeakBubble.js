@@ -15,11 +15,11 @@ export default class SpeakBubble {
 
         this.speakBubbleEl = document.createElement('p');
         this.speakBubbleEl.classList.add('speakBubble_container', 'box-triangle', this.isBot ? 'bot' : 'person');
-        this.speakBubbleEl.textContent = this.message;
+        this.speakBubbleEl.innerText = this.message.replace('&quot;', '"');
 
         const nameEl = document.createElement('p');
         nameEl.classList.add('userName');
-        nameEl.textContent = `${name  } :`;
+        nameEl.innerText = `${name  } :`;
         this.speakBubbleEl.prepend(nameEl);
   }
 
