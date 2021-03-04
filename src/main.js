@@ -69,9 +69,11 @@ const sendMessage = (userName, userMessage) => {
 
             if(message.botMessageHolderList.length > 0) {
                 addLoader();
-
-                setTimeout(() =>
-                    deliverMessage(message.botMessageHolderList, 0), message.botMessageHolderList[0].timeDelayMs);
+                timer = 0;
+                setTimeout(() => {
+                    timer = 0;
+                    deliverMessage(message.botMessageHolderList, 0);
+                }, message.botMessageHolderList[0].timeDelayMs);
             }
         });
 }
