@@ -42,7 +42,7 @@ export default class Message {
 
   }
 
-  getRandomMSSleepTime = (message = '') => (Math.random() + 1) * 1000 + message.length * 40;
+  getRandomMSSleepTime = (message = '') => (Math.random() + 1) * 1000 + message.length * 20;
 
   getMessageHolder = (userName, message, isBot, isShifumi) => {
 
