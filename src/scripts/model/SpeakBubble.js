@@ -38,7 +38,8 @@ export default class SpeakBubble {
             this.speakBubbleEl.classList.add('box-triangle');
 
             mainContentEl = document.createElement('p');
-            mainContentEl.innerText = message.replace(/&quot;/, '');
+
+            mainContentEl.innerText = this.decodeHtml(message);
             mainContentEl.classList.add('text');
         }
 
@@ -49,5 +50,12 @@ export default class SpeakBubble {
     isImageLink = (message) => this.imageRegex.test(message);
 
     getEl = () => this.speakBubbleEl;
+
+    // https://stackoverflow.com/a/7394787
+    decodeHtml = (html) => {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
 
 }
