@@ -63,6 +63,7 @@ export default class SpeakBubble {
         this.speakBubbleEl.append(mainContentEl);
 
     }
+
     getImage = (msg) => {
         switch (msg) {
             case "pendu1.png":

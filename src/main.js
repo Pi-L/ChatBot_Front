@@ -12,6 +12,7 @@ const sendMessageInputEl = sendMessageFormEl.querySelector('#message')
 
 let userName;
 let timer = 0;
+const MAX_TIMER = 20;
 let timerInterval;
 
 const scrollToBottom = () => document.body.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
@@ -51,14 +52,14 @@ const sendMessage = (nameText, messageText) => {
     getMessage(nameText, messageText)
         .then(message => {
 
-            if(!!message.userMessageHolder?.message
+            if(!!message?.userMessageHolder?.message
                 && message.userMessageHolder.message !== 'unevachedansunpresquimangedesfourmisarcenciel') {
 
                 mainEl.appendChild(message.userMessageHolder.element);
                 scrollToBottom();
             }
 
-            if(message.botMessageHolderList.length > 0) {
+            if(!!message?.botMessageHolderList?.length) {
                 addLoader();
                 timer = 0;
                 setTimeout(() => {
@@ -74,7 +75,7 @@ const startInterval = () => {
 
         timer++;
 
-        if(timer > 25) {
+        if(timer > MAX_TIMER) {
             sendMessage(userName,'unevachedansunpresquimangedesfourmisarcenciel');
             timer = 0;
         }
