@@ -20,6 +20,7 @@
         "sass": "^1.32.8"
     },
     "dependencies": {
+        "@parcel/transformer-image": "^2.0.0-nightly.1981",
         "axios": "^0.21.1"
     }
 }

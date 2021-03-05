@@ -108,8 +108,9 @@ sendMessageFormEl.addEventListener('submit', (e) => {
     sendMessage(userName, userMessage);
 })
 
+window.scrollToBottom = scrollToBottom;
 
-
+// export { scrollToBottom };
 
 
 

@@ -1,11 +1,11 @@
-import fs from 'fs'
-const pendu1 = fs.readFileSync(__dirname + "/../../images/pendu1.png")
-const pendu2 = fs.readFileSync(__dirname + "/../../images/pendu2.png")
-const pendu3 = fs.readFileSync(__dirname + "/../../images/pendu3.png")
-const pendu4 = fs.readFileSync(__dirname + "/../../images/pendu4.png")
-const pendu5 = fs.readFileSync(__dirname + "/../../images/pendu5.png")
-const pendu6 = fs.readFileSync(__dirname + "/../../images/pendu6.png")
-const pendu7 = fs.readFileSync(__dirname + "/../../images/pendu7.png")
+import pendu1 from "url:../../images/pendu1.png";
+import pendu2 from "url:../../images/pendu2.png";
+import pendu3 from "url:../../images/pendu3.png";
+import pendu4 from "url:../../images/pendu4.png";
+import pendu5 from "url:../../images/pendu5.png";
+import pendu6 from "url:../../images/pendu6.png";
+import pendu7 from "url:../../images/pendu7.png";
+
 export default class SpeakBubble {
 
     imageRegex = new RegExp(/.*\.(jpg|jpeg|png|gif|JPG).*/gm);
@@ -39,14 +39,15 @@ export default class SpeakBubble {
             mainContentEl = document.createElement('img');
             if (this.message.match(/pendu/)) {
                 let pendu = this.getImage(this.message)
-                console.log(pendu)
-                console.log(this.message)
+
                 if (pendu) {
-                    mainContentEl.src = `data:image/jpg;base64,${pendu.toString('base64')}`
+                    mainContentEl.src = pendu;
+                    mainContentEl.setAttribute("onload", "scrollToBottom()");
                     mainContentEl.style.width = "12vw"
                 }
             } else {
                 mainContentEl.setAttribute("src", this.message);
+                mainContentEl.setAttribute("onload", "scrollToBottom()");
                 mainContentEl.classList.add('image');
             }
 
