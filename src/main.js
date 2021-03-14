@@ -12,7 +12,7 @@ const sendMessageInputEl = sendMessageFormEl.querySelector('#message')
 
 let userName;
 let timer = 0;
-const MAX_TIMER = 20;
+const MAX_TIMER = 60;
 let timerInterval;
 
 const scrollToBottom = () => document.body.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
@@ -71,7 +71,7 @@ const sendMessage = (nameText, messageText) => {
 }
 
 const startInterval = () => {
-    const interval = setInterval(() => {
+    timerInterval = setInterval(() => {
 
         timer++;
 
@@ -91,6 +91,7 @@ pseudoPopinFormEl.addEventListener('submit', (e) => {
         pseudoPopinEl.remove();
 
         startInterval();
+        sendMessageInputEl.focus();
     }
 })
 

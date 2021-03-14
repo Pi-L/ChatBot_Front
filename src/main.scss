@@ -6,9 +6,18 @@
 @use './styles/common/palette' as c;
 
 $body-pad-lr: 5rem;
+$body-pad-lr-sm: $body-pad-lr / 3;
+
+$header-height : 50px;
+$footer-height : 104px;
+$break-point: 580px;
 
 body {
     padding: 0 $body-pad-lr;
+
+    @media only screen and (max-width: $break-point) {
+        padding: 0 $body-pad-lr-sm;
+    }
 
     background-color: c.$SecondaryBg;
     color: c.$secondaryText;
@@ -16,14 +25,13 @@ body {
 
     position: relative;
 
+    min-height: 100vh;
+
     .hidden {
         display: none;
     }
 
 }
-
-$header-height : 90px;
-$footer-height : 110px;
 
 header {
     position: sticky;
@@ -31,6 +39,13 @@ header {
     justify-content: center;
     align-items: center;
     top : 0;
+    margin-left: -$body-pad-lr;
+    margin-right: -$body-pad-lr;
+
+    @media only screen and (max-width: $break-point) {
+        margin-left: -$body-pad-lr-sm;
+        margin-right: -$body-pad-lr-sm;
+    }
 
     height: $header-height;
 
@@ -42,24 +57,27 @@ header {
     border-radius: 0 0 20px 20px;
 
     h1 {
-        @include f.font__secondary('bold', h1);
+        @include f.font__secondary('bold', h2);
         text-align: center;
     }
 }
+
 
 main {
     overflow: hidden;
     min-height: calc(100vh - #{$header-height} - #{$footer-height});
     padding: 5px 0;
+    max-width: 1600px;
+    margin: 0 auto;
 
     .speakBubble_container {
 
         $triangle-color: c.$CardBg;
-        $triangle-width: 15px;
+        $triangle-width: 12px;
         $triangle-space-factor: 2;
         color: c.$cardText;
         background-color: $triangle-color;
-        font-size: 29px;
+        font-size: 20px;
 
         width: max-content;
         min-width: 120px;
@@ -69,7 +87,7 @@ main {
         border-radius: 10px;
         padding: 5px 10px;
 
-        margin-bottom: 60px;
+        margin-bottom: 41px;
 
         &.box-triangle {
 
@@ -87,7 +105,7 @@ main {
 
         > .image {
             display: block;
-            max-height: calc(100vh - #{$header-height} - #{$footer-height} - 60px);
+            max-height: calc(80vh - #{$header-height} - #{$footer-height});
             width: auto;
             padding: 5px 5px 10px;
             border-radius: 20px;
@@ -138,14 +156,18 @@ main {
 
 footer {
     position: sticky;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     bottom: 0;
-    width: 100%;
     height: $footer-height;
 
-    padding: 5px 10px;
+    max-width: 1600px;
+    margin: 0 auto;
+
+    padding: 5px 40px;
     border-radius: 15px 15px 0 0 ;
 
     background-color: c.$PrimaryBg;
@@ -153,8 +175,48 @@ footer {
 
     font-weight: bold;
 
-    > * {
-        margin-right: 5px;
+    @media only screen and (max-width: $break-point) {
+        margin-left: -$body-pad-lr-sm;
+        margin-right: -$body-pad-lr-sm;
+    }
+
+    .messageForm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+
+        > * {
+            margin-right: 7px;
+        }
+
+        @media only screen and (max-width: $break-point) {
+            flex-flow: column;
+
+            > * {
+                margin-right: 0;
+                margin-bottom: 7px;
+            }
+        }
+
+        > input {
+            flex: 1 1 auto;
+            padding: 4px;
+        }
+
+        .sendMessage {
+            background-color: c.$text-secondary;
+            border-radius: 73% 41% 57%;
+            border: 2px solid c.$secondaryText;
+            cursor: pointer;
+            box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+
+            @media only screen and (max-width: $break-point) {
+                display: none;
+            }
+
+        }
     }
 }
 

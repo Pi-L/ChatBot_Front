@@ -1,10 +1,10 @@
-import pendu1 from "url:../../images/pendu1.png";
-import pendu2 from "url:../../images/pendu2.png";
-import pendu3 from "url:../../images/pendu3.png";
-import pendu4 from "url:../../images/pendu4.png";
-import pendu5 from "url:../../images/pendu5.png";
-import pendu6 from "url:../../images/pendu6.png";
-import pendu7 from "url:../../images/pendu7.png";
+import pendu1 from "../../images/pendu1.png";
+import pendu2 from "../../images/pendu2.png";
+import pendu3 from "../../images/pendu3.png";
+import pendu4 from "../../images/pendu4.png";
+import pendu5 from "../../images/pendu5.png";
+import pendu6 from "../../images/pendu6.png";
+import pendu7 from "../../images/pendu7.png";
 
 export default class SpeakBubble {
 
